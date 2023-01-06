@@ -1,10 +1,9 @@
-// src/Models/PaymentODM.ts
-
 import {
   Model,
   Schema,
   model,
   models,
+  isValidObjectId,
 } from 'mongoose';
 import ICar from '../Interfaces/ICar';
   
@@ -27,5 +26,14 @@ export default class CarODM {
   
   public async create(car: ICar): Promise<ICar> {
     return this.model.create({ ...car });
+  }
+
+  public async getAll():Promise<ICar[]> {
+    return this.model.find();
+  }
+
+  public async getCar(id: string): Promise<ICar | null> {
+    if (!isValidObjectId(id)) throw new Error('Invalid mongo id');
+    return this.model.findById(id);
   }
 }
