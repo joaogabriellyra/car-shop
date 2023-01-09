@@ -29,8 +29,8 @@ const inputArray = [
   },
 ];
 
-describe('Deveria buscar todos os carros', function () {
-  it('Deveria buscar todos os carros com sucesso', async function () {
+describe('Deveria buscar um carro pelo seu id', function () {
+  it('Deveria buscar um carro pelo seu id com sucesso', async function () {
     // Arrange
     const carOutput = inputArray.map((item) => new Car(item));
     
@@ -38,7 +38,6 @@ describe('Deveria buscar todos os carros', function () {
     // Act
     const service = new CarService();
     const result = await service.getCar('63b8adc0742c31487ab937bf');
-    console.log(result);
     // Assert
     expect(result).to.be.deep.equal(carOutput[0]);
 

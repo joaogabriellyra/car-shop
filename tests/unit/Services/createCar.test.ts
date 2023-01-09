@@ -39,5 +39,9 @@ describe('Deveria criar um carro', function () {
     const result = await service.create(carInput);
 
     expect(result).to.be.deep.equal(carOutput);
+
+    afterEach(function () {
+      sinon.restore();
+    });
   });
 });
